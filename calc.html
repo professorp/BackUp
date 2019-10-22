@@ -1,0 +1,31 @@
+<html>
+<head>
+<style>
+body {
+    font-family: monospace;
+    font-size: 15px;
+    background-image: linear-gradient(to left, blue, orange,yellow);
+    text-justify: auto;
+}</style>
+<script type="text/javascript">
+var num = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split(" ");
+var tens = "twenty thirty forty fifty sixty seventy eighty ninety".split(" ");
+function change(n){
+    if (n < 20) return num[n];
+    var digit = n%10;
+    if (n < 100) return tens[~~(n/10)-2] + (digit? "-" + num[digit]: "");
+    if (n < 1000) return num[~~(n/100)] +" hundred" + (n%100 == 0? "": " " + change(n%100));
+    return "0<=Num<=999 accepted only";
+} 
+</script>
+
+</head>
+<body><center>
+<h1>Renamer</h1>
+<form action="/action_page.php" id="numform" oninput="x.value=change(parseInt(b.value))">
+<input type="number" id="b" name="a" value="0">
+<br>
+</form>
+<output form="numform" name="x" for="a b"></output>
+</center></body>
+</html>
